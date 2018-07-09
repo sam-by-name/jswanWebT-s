@@ -23,3 +23,11 @@ function userExists (username, conn) {
       return count[0].n > 0
     })
 }
+
+function getUserByName(username, conn) {
+  const db = conn || connection
+  return db('logins')
+  .select()
+  .where('username', username)
+  .first()
+}
