@@ -1,8 +1,6 @@
 const express = require('express')
-// const request = require('superagent')
 const db = require('../db/logins')
 const router = express.Router()
-
 router.use(express.json())
 
 router.post('/register', (req, res) => {
