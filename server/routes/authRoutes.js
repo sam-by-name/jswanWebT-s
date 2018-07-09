@@ -1,10 +1,11 @@
 const express = require('express')
 const {userExists, createUser} = require('../db/logins')
-const token = require('../auth/token')
+const {issue, decode} = require('../auth/token')
 
 const router = express.Router()
+router.use(express.json())
 
-router.post('/register', register, token)
+router.post('/register', register, issue)
 
 function register (req, res, next) {
   const {username, password} = req.body
@@ -21,6 +22,12 @@ function register (req, res, next) {
       res.status(500).send({message: err.message})
     })
 }
+
+router.get('/signin', decode, (req, res) => {
+  res.json({
+    username: req.user.username
+  })
+})
 
 module.exports = router
 
