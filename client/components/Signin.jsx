@@ -1,17 +1,13 @@
 import React from 'react'
-import {Routes, Links} from 'react-router-dom'
-
+// import {Routes, Links} from 'react-router-dom'
 
 class Signin extends React.Component {
-  constructor(props){
+  constructor (props) {
     super(props)
     this.state = {
-      placeholder: "Hello"
+      placeholder: 'Hello'
     }
   }
-
-
-  
 }
 
 export default Signin
