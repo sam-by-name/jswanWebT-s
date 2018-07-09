@@ -1,9 +1,12 @@
 const express = require('express')
 const db = require('../db/logins')
-const router = express.Router()
-router.use(express.json())
+const token = require('../auth/token')
 
-router.post('/register', (req, res) => {
+const router = express.Router()
+
+router.post('/register', register, token.issue)
+
+function register (req, res, next) {
   const {username, password} = req.body
   db.userExists(username)
     .then(exists => {
@@ -11,11 +14,11 @@ router.post('/register', (req, res) => {
         return res.status(400).send({message: 'User exists'})
       }
       db.createUser(username, password)
-        .then(() => res.status(201).end())
+        .then(() => next())
     })
     .catch(err => {
       res.status(500).send({message: err.message})
     })
-})
+}
 
 module.exports = router
