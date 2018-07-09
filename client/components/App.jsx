@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Router} from 'react-router-dom'
+import {HashRouter as Router} from 'react-router-dom'
 
 class App extends React.Component {
   constructor (props) {

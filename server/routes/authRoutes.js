@@ -1,19 +1,18 @@
 const express = require('express')
 const request = require('superagent')
-
+const userFn = require('../db/logins')
 const router = express.Router()
 
 router.use(express.json())
 
-router.get('/subreddit/:subreddit', (req, res) => {
-  request
-    .get(`http://www.reddit.com/r/${req.params.subreddit}.json`)
-    .end((err, result) => {
-      if (err) {
-        res.status(500).send(err.message)
-      } else {
-        res.json(result.body.date.children)
-      }
-    })
+
+router.post('/register', (req,res) => {
+  const userInfo =  {username, password} = req.body
+  if (userFn.userExists(userInfo.username)){
+    return res.status(200).send('Username Taken')
+  }
+  else{userFn.CreateUser(userInfo.username, userInfo.password)}
 })
+
+
 module.exports = router
