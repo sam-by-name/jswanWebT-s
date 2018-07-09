@@ -1,15 +1,23 @@
 const express = require('express')
 // const request = require('superagent')
-const userFn = require('../db/logins')
+const db = require('../db/logins')
 const router = express.Router()
 
 router.use(express.json())
 
 router.post('/register', (req, res) => {
   const {username, password} = req.body
-  if (userFn.userExists(username)) {
-    return res.status(200).send('Username Taken')
-  } else { userFn.CreateUser(username, password) }
+  db.userExists(username)
+    .then(exists => {
+      if (exists) {
+        return res.status(400).send({message: 'User exists'})
+      }
+      db.createUser(username, password)
+        .then(() => res.status(201).end())
+    })
+    .catch(err => {
+      res.status(500).send({message: err.message})
+    })
 })
 
 module.exports = router

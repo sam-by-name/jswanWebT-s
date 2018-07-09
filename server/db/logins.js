@@ -1,4 +1,7 @@
-const connection = require('../../knexfile')
+const environment = process.env.NODE_ENV || 'development'
+const config = require('./knexfile')[environment]
+const connection = require('knex')(config)
+
 module.exports = {
   createUser,
   userExists
@@ -13,7 +16,7 @@ function createUser (username, password, conn) {
 function userExists (username, conn) {
   const db = conn || connection
   return db('logins')
-    .count('id ad n')
+    .count('id as n')
     .where('username', username)
     .then(count => {
       console.log(count)
