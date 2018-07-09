@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require('path')
 
-
 // const auth = require('./routes/authRoutes')
 const server = express()
 

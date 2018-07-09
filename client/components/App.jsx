@@ -1,4 +1,5 @@
 import React from 'react'
+import Signin from './Signin'
 
 import {HashRouter as Router} from 'react-router-dom'
 
@@ -12,7 +13,10 @@ class App extends React.Component {
   render () {
     return (
       <Router>
-        <div><h1>Hi</h1></div>
+        <div>
+          <div><h1>Hi</h1></div>
+          <Signin />
+        </div>
       </Router>
     )
   }
