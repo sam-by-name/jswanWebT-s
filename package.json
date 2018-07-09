@@ -1,12 +1,15 @@
 {
+<<<<<<< HEAD
   "name": "jswanWebT-s",
   "version": "1.0.0",
   "main": "server/index.js",
   "repository": "https://github.com/sam-by-name/jswanWebT-s.git",
   "author": "MichaelMitch <michael.j.mitchelson@gmail.com>",
   "license": "MIT",
+=======
+>>>>>>> ea5552e03fff6b199adb530f7c566e8f6d8ea817
   "scripts": {
-    "dev": "nodemon --watch server & yarn build --watch",
+    "dev": "nodemon server & yarn build --watch",
     "build": "webpack --config ./client/webpack.config.js"
   },
   "babel": {
@@ -31,6 +34,15 @@
     "superagent": "^3.8.3",
     "webpack": "^4.15.1"
   },
+<<<<<<< HEAD
+=======
+  "name": "jswanWebT-s",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sam-by-name/jswanWebT-s.git",
+  "author": "sam-by-name <sam-sanders@hotmail.co.uk>",
+  "license": "MIT",
+>>>>>>> ea5552e03fff6b199adb530f7c566e8f6d8ea817
   "devDependencies": {
     "nodemon": "^1.17.5",
     "webpack-cli": "^3.0.8"
