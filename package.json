@@ -1,8 +1,14 @@
-{ 
+{
+  "name": "jswanWebT-s",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "repository": "https://github.com/sam-by-name/jswanWebT-s.git",
+  "author": "MichaelMitch <michael.j.mitchelson@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "nodemon --watch server & yarn build --watch",
     "build": "webpack --config ./client/webpack.config.js"
-},
+  },
   "babel": {
     "presets": [
       "env",
@@ -10,6 +16,7 @@
     ]
   },
   "dependencies": {
+    "auth": "^0.0.9",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
@@ -19,12 +26,13 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
+    "sodium": "^2.0.3",
     "sqlite3": "^4.0.1",
-    "webpack": "^4.15.1",
-    "webpack-dev-server": "^3.1.4"
+    "superagent": "^3.8.3",
+    "webpack": "^4.15.1"
   },
-  "dev-Dependencies": {
-    "webpack-cli": "^3.0.8",
-    "nodemon": "^1.17.5"
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "webpack-cli": "^3.0.8"
   }
 }
