@@ -8,7 +8,6 @@ function issue (req, res) {
   db.getUserByName(req.body.username)
     .then(login => {
       const token = createToken(login, process.env.JWT_SECRET)
-      console.log(token)
       res.json({
         message: 'You are indeed you, well done!',
         token
