@@ -1,21 +1,19 @@
-const path = require('path')
-const config = require(path.join(__dirname,'../')).development
-const knex = require('knex')(config)
-
-
+const knex = require('knex')
+const config = require('../../knexfile').development
+const dbTest = knex(config)
 module.exports = {
   createUser,
   userExists
 }
 
 function createUser (username, password, conn) {
-  const db = conn || connection
+  const db = conn || dbTest
   return db('logins')
     .insert({username, hash: password})
 }
 
 function userExists (username, conn) {
-  const db = conn || connection
+  const db = conn || dbTest
   return db('logins')
     .count('id ad n')
     .where('username', username)
