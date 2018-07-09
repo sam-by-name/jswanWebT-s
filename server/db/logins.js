@@ -26,6 +26,7 @@ function userExists (username, conn) {
     })
 }
 
+<<<<<<< HEAD
 function getUserByName (username, conn) {
   const db = conn || connection
   return db('logins')
@@ -33,3 +34,12 @@ function getUserByName (username, conn) {
     .where('username', username)
     .first()
 }
+=======
+function getUserByName(username, conn) {
+  const db = conn || connection
+  return db('logins')
+  .select()
+  .where('username', username)
+  .first()
+}
+>>>>>>> 5ad736d313834918cbe0142658f731e51f78600f
