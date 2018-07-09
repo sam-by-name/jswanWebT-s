@@ -1,4 +1,7 @@
-const connection = require('connection')
+const path = require('path')
+const config = require(path.join(__dirname,'../')).development
+const knex = require('knex')(config)
+
 
 module.exports = {
   createUser,
