@@ -1,9 +1,11 @@
 import request from 'superagent'
 
-export const SHOW_ERROR = 'SHOW_ERROR'
+// import saveUserToken from 'tobemade' // to be created
+// import receiveLogin from 'tobemade'  // to be created
 
-export const SUBMIT_USER = 'SUBMIT_USR'
-export const GET_CONFIRM = 'RECEIVE_CONFIRMATION'
+export const SHOW_ERROR = 'SHOW_ERROR'
+export const REG_USER = 'SUBMIT_USR'
+export const CONFIRM_USER = 'CONFIRM_USER'
 
 export const showError = (errorMessage) => {
   return {
@@ -12,9 +14,9 @@ export const showError = (errorMessage) => {
   }
 }
 
-export function regUsr (newUser) {
+export function register (newUser) {
   return {
-    type: SUBMIT_USER,
+    type: REG_USER,
     username: newUser.username,
     password: newUser.password
   }
@@ -22,20 +24,20 @@ export function regUsr (newUser) {
 
 export function newUsrConf () {
   return {
-    type: GET_CONFIRM
+    type: CONFIRM_USER
   }
 }
 
-export function registerUser () {
+export function regUser (deets) {
   return dispatch => {
-    dispatch(regUsr())
+    dispatch(register(deets))
     return request('post', '/register')
-      .then((response) => {
-        if (!response.ok) {
-          dispatch(showError(response.body.message))
-          return Promise.reject(response.body.message)
+      .then((res) => {
+        if (!res.ok) {
+          dispatch(showError(res.body.message))
+          return Promise.reject(res.body.message)
         } else {
-          const userInfo = saveUserToken(response.body.token)
+          const userInfo = saveUserToken(res.body.token)
           dispatch(receiveLogin(userInfo))
         }
       }).catch(err => {

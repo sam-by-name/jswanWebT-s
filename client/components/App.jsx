@@ -10,7 +10,6 @@ const App = () => {
   return (
     <Router>
       <div className='sauce'>
-        <div><h1>Hi</h1></div>
         <Signin />
         <ErrorMessage />
         <WaitIndicator />

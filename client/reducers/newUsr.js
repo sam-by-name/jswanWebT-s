@@ -1,8 +1,8 @@
-import {GET_CONFIRM} from '../actions'
+import {CONFIRM_USER} from '../actions'
 
 function newUsr (state = '', action) {
   switch (action.type) {
-    case GET_CONFIRM:
+    case CONFIRM_USER:
       return action.message
 
     default:
