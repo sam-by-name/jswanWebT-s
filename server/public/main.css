@@ -6,6 +6,13 @@ body {
   margin: 0;
 }
 
+.firstNavLeft {
+  margin-left: 540px;
+}
+
 .navFloat {
   float: left;
+  padding: 35px 10px;
+  font-size: 1.2em;
+  color: black;
 }

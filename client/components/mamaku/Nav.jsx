@@ -1,11 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Ideas} from './Ideas'
-import {Notes} from './Notes'
-import {Calendar} from './Calendar'
-import {Games} from './Games'
-import {Slack} from './Slack'
-import {Logout} from './Logout'
+import {Ideas} from './nav/Ideas'
+import {Notes} from './nav/Notes'
+import {Calendar} from './nav/Calendar'
+import {Games} from './nav/Games'
+import {Slack} from './nav/Slack'
+import {Logout} from './nav/Logout'
 
 const Nav = () => {
   const navStyle = {
@@ -13,6 +13,7 @@ const Nav = () => {
     width: '100%'
   }
   const signInLogo = {
+    float: 'left',
     width: '140px',
     height: '120px',
     margin: '10px 50px'
