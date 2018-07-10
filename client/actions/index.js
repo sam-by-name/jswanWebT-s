@@ -7,6 +7,9 @@ export const SHOW_ERROR = 'SHOW_ERROR'
 export const REG_USER = 'SUBMIT_USR'
 export const CONFIRM_USER = 'CONFIRM_USER'
 
+export const ADD_PEER = 'ADD_PEER'
+export const ADD_PEERS = 'ADD_PEERS'
+
 export const showError = (errorMessage) => {
   return {
     type: SHOW_ERROR,
@@ -43,5 +46,19 @@ export function regUser (deets) {
       }).catch(err => {
         dispatch(showError(err.message))
       })
+  }
+}
+
+export const addPeer = (peer) => {
+  return {
+    type: ADD_PEER,
+    word: peer
+  }
+}
+
+export const addPeers = (peers) => {
+  return {
+    type: ADD_PEERS,
+    words: peers
   }
 }
