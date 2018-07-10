@@ -5,3 +5,7 @@ h1 {
 body {
   margin: 0;
 }
+
+.navFloat {
+  float: left;
+}
