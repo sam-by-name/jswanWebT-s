@@ -1,4 +1,4 @@
-// import request from 'superagent'
+import request from 'superagent'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 
@@ -23,5 +23,23 @@ export function regUsr (newUser) {
 export function newUsrConf () {
   return {
     type: GET_CONFIRM
+  }
+}
+
+export function registerUser () {
+  return dispatch => {
+    dispatch(regUsr())
+    return request('post', '/register')
+      .then((response) => {
+        if (!response.ok) {
+          dispatch(showError(response.body.message))
+          return Promise.reject(response.body.message)
+        } else {
+          const userInfo = saveUserToken(response.body.token)
+          dispatch(receiveLogin(userInfo))
+        }
+      }).catch(err => {
+        dispatch(showError(err.message))
+      })
   }
 }
