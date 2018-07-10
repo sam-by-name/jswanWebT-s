@@ -1,27 +1,25 @@
 import React from 'react'
-// import {Routes, Links} from 'react-router-dom'
+import {regUsr} from '../actions'
 
-class Signin extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      placeholder: 'Hello'
-    }
-  }
-  render () {
-    return (
+const Signin = () => {
+  return (
+    <div>
       <div>
         <div>
-          <div><input type="text" /></div>
-          <div><input type="password" /></div>
-          <input type="submit" value="Sign In" />
+          <label>Username</label>
+          <input id="username" type="text" />
         </div>
         <div>
-
+          <label>Password</label>
+          <input id="password" type="password" />
+        </div>
+        <div>
+          <input type="submit" value="Sign In"
+            onClick={regUsr} />
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Signin

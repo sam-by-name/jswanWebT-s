@@ -1,9 +1,9 @@
-import request from 'superagent'
+// import request from 'superagent'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 
-export const REQUEST_POSTS = 'REQUEST_POSTS'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const SUBMIT_USER = 'SUBMIT_USR'
+export const GET_CONFIRM = 'RECEIVE_CONFIRMATION'
 
 export const showError = (errorMessage) => {
   return {
@@ -12,29 +12,16 @@ export const showError = (errorMessage) => {
   }
 }
 
-export const requestPosts = (posts) => {
+export function regUsr (newUser) {
   return {
-    type: REQUEST_POSTS
+    type: SUBMIT_USER,
+    username: newUser.username,
+    password: newUser.password
   }
 }
 
-export const receivePosts = (posts) => {
+export function newUsrConf () {
   return {
-    type: RECEIVE_POSTS,
-    posts: posts.map(post => post.data)
-  }
-}
-
-export const fetchPosts = (subreddit) => {
-  return (dispatch) => {
-    dispatch(requestPosts())
-    return request
-      .get(`/api/v1/reddit/subreddit/${subreddit}`)
-      .then(res => {
-        dispatch(receivePosts(res.body))
-      })
-      .catch(err => {
-        dispatch(showError(err.message))
-      })
+    type: GET_CONFIRM
   }
 }
